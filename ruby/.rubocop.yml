@@ -13,5 +13,8 @@ Rails:
 
 # STYLES ######################################################################
 
+Bundler/OrderedGems:
+  Enabled: true
+
 Style/Documentation:
   Enabled: false
