@@ -13,11 +13,14 @@ echo -e "${GREEN}Building enviroment to setup rails...${NC}"
 docker-compose build
 
 echo -e "${GREEN}Starting the builder...${NC}"
+
 docker-compose run --rm generator \
-    rails new $APP_NAME \
+    rails new builded/$APP_NAME \
     --api --skip-sprockets \
     --skip-javascript \
     --skip-turbolinks \
     --skip-test-unit \
     --database postgresql \
     -m templates/template.rb
+
+chown -R $USER builded
