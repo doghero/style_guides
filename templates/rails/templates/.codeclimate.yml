@@ -1,0 +1,41 @@
+---
+version: "2"
+prepare:
+  fetch:
+    - url: "https://raw.githubusercontent.com/doghero/style_guides/master/ruby/.rubocop.yml"
+      path: ".rubocop.yml"
+    - url: "https://raw.githubusercontent.com/doghero/style_guides/master/ruby/.reek.yml"
+      path: ".reek.yml"
+plugins:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        ruby:
+          mass_threshold: 50
+  reek:
+    enabled: true
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  csslint:
+    enabled: true
+  coffeelint:
+    enabled: false
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+    # Manter a versão abaixo idêntica à gem usada no projeto. Ver disponíveis em
+    # https://docs.codeclimate.com/docs/rubocop#section-using-rubocop-s-newer-versions
+    channel: rubocop-0-73
+exclude_patterns:
+- config/
+- db/
+- spec/
+- test/
+- vendor/
+- public/assets/

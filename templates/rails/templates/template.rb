@@ -72,6 +72,10 @@ after_bundle do
   file '.circleci/config.yml', File.read('../../templates/.circleci/config.yml').gsub('#{app_name}', app_name)
   # END Circle CI
 
+  # START Circle CI
+  file '.codeclimate.yml', File.read('../../templates/.codeclimate.yml')
+  # END Circle CI
+
   # START GIT
   git :init
   git add: "."
