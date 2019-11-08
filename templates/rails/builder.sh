@@ -23,4 +23,4 @@ docker-compose run --rm generator \
     --database postgresql \
     -m templates/template.rb
 
-chown -R $USER builded
+sudo hown -R $USER builded
