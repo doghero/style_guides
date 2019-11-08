@@ -5,7 +5,7 @@ Este projeto visa padronizar e facilitar a nossa criação de aplicações Rails
 ## How it works?
 
 ### Docker
-Para facilitar o processo de criação utilizamos um container com a imagem de Ruby, isso retira a necessidade de ter o Ruby, Bundle na maquina local e também auxilia no paroização das versões.
+Para facilitar o processo de criação utilizamos um container com a imagem de Ruby, isso retira a necessidade de ter o Ruby, Bundler, na máquina local e também auxilia no padronização das versões.
 
 Dentro dessa imagem vamos encontrar o Rails instalado e mais algumas ferramentas auxiliares.
 
@@ -24,7 +24,7 @@ Arquivo que contém a lista de comandos que auxiliam na criação da imagem e ex
 ## How create a new application
 
 1. `cd {STYLE_GUIDES_PATH}/templates/rails`
-2. ./builder.s`
+2. ./builder.sh`
 3. Digite o nome da sua aplicação, em letras minúsculas e palavras separadas com `_`
 4. O script irá buildar a imagem base (apenas aprecie)
 5. O script (builder.sh) irá executar o comando `rails new` com alguns parâmetros, certifique-se de que eles estejam de acordo com suas necessidades.
