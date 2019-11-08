@@ -66,6 +66,7 @@ after_bundle do
   # START Docker config
   file 'Dockerfile', File.read('../../templates/Dockerfile').gsub('#{app_name}', app_name)
   file 'docker-compose.yml', File.read('../../templates/docker-compose.yml').gsub('#{app_name}', app_name)
+  file '.dockerignore', File.read('../../templates/.dockerignore')
   # END Docker config
 
   # START Circle CI
