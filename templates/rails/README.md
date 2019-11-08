@@ -5,7 +5,7 @@ Este projeto visa padronizar e facilitar a nossa criação de aplicações Rails
 ## How it works?
 
 ### Docker
-Para facilitar o processo de criação utilizamos um container com a imagem de Ruby, isso retira a necessidade de ter o Ruby, Bundle na maquina local e também auxilia no paroização das versões.
+Para facilitar o processo de criação utilizamos um container com a imagem de Ruby, isso retira a necessidade de ter o Ruby, Bundler, na máquina local e também auxilia no padronização das versões.
 
 Dentro dessa imagem vamos encontrar o Rails instalado e mais algumas ferramentas auxiliares.
 
