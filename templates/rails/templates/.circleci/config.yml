@@ -1,0 +1,49 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/#{app_name}/
+    parralelism: 1
+    shell: /bin/bash
+    environment:
+      CIRCLE_ENV: test
+    docker:
+    - image: circleci/ruby:2.6.3-stretch-node
+      environment:
+        DATABASE_HOST: 127.0.0.1
+        DATABASE_USERNAME: #{app_name}
+        DATABASE_PASSWORD: password
+        CC_TEST_REPORTER_ID: 105318b81016c23fc6d866ea80208a23f237346d77c7bd9d960b0e129a93bea8
+    - image: circleci/postgres:11.4-alpine
+      environment:
+        POSTGRES_USER: #{app_name}
+    - image: circleci/redis:5-alpine
+    steps:
+    - restore_cache:
+        keys:
+          - source-v1-{{ checksum "Gemfile.lock" }}
+    - checkout
+    - run: "gem install bundler"
+    - run: "bundle install --path=vendor/bundle"
+    - run:
+        name: Database setup
+        command: |
+          bundle exec rake db:create
+          bundle exec rake db:test:load
+    - save_cache:
+        key: source-v1-{{ checksum "Gemfile.lock" }}
+        paths:
+          - "/vendor/bundle"
+    - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+    - run:
+        working_directory: ~/#{app_name}/
+        command: bundle exec rspec
+    - run:
+          name: Send coverage to Code Climate
+          command: |
+            ./cc-test-reporter after-build --exit-code $?
+
