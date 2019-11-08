@@ -24,7 +24,7 @@ Arquivo que contém a lista de comandos que auxiliam na criação da imagem e ex
 ## How create a new application
 
 1. `cd {STYLE_GUIDES_PATH}/templates/rails`
-2. ./builder.s`
+2. ./builder.sh`
 3. Digite o nome da sua aplicação, em letras minúsculas e palavras separadas com `_`
 4. O script irá buildar a imagem base (apenas aprecie)
 5. O script (builder.sh) irá executar o comando `rails new` com alguns parâmetros, certifique-se de que eles estejam de acordo com suas necessidades.
