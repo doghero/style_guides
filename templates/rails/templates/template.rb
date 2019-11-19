@@ -43,12 +43,8 @@ file '.env', <<-CODE
 
 after_bundle do
   # START database config
-  data = YAML.load_file('config/database.yml')
-
-  data['default']['host'] = "<%= ENV['DATABASE_HOST'] %>"
-  data['default']['username'] = "<%= ENV['DATABASE_USERNAME'] %>"
-  data['default']['password'] = "<%= ENV['DATABASE_PASSWORD'] %>"
-  File.open('config/database.yml', 'w') { |f| YAML.dump(data, f) }
+  run "rm -f config/database.yml"
+  file 'config/database.yml', File.read('../../templates/database.yml')
   # END database config
 
   # START Rspec
