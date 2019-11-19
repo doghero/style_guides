@@ -67,6 +67,7 @@ after_bundle do
   file 'Dockerfile', File.read('../../templates/Dockerfile').gsub('#{app_name}', app_name)
   file 'docker-compose.yml', File.read('../../templates/docker-compose.yml').gsub('#{app_name}', app_name)
   file '.dockerignore', File.read('../../templates/.dockerignore')
+  file 'entrypoint.sh', File.read('../../templates/entrypoint.sh')
   # END Docker config
 
   # START Circle CI
@@ -77,8 +78,16 @@ after_bundle do
   file '.codeclimate.yml', File.read('../../templates/.codeclimate.yml')
   # END Circle CI
 
+  # START PR template
+  file 'pull_request_template.md', File.read('../../templates/pull_request_template.md')
+  # END PR template
+
   # START GIT
   git :init
   git add: "."
+
+  if yes?("Did you want to set origin git remote as git@github.com:doghero/#{app_name}.git")
+    run "git remote add origin git@github.com:doghero/#{app_name}.git"
+  end
   # END GIT
 end

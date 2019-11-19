@@ -22,5 +22,3 @@ docker-compose run --rm generator \
     --skip-test-unit \
     --database postgresql \
     -m templates/template.rb
-
-sudo chown -R $USER builded
