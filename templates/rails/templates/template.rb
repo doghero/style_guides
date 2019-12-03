@@ -78,12 +78,19 @@ after_bundle do
   file 'pull_request_template.md', File.read('../../templates/pull_request_template.md')
   # END PR template
 
+  # START spec supports
+  file 'spec/support/json_body.rb', File.read('../../templates/spec/support/json_body.rb')
+  file 'spec/support/simple_cov.rb', File.read('../../templates/spec/support/simple_cov.rb')
+
+  insert_into_file 'spec/rails_helper.rb', "Dir['./spec/support/**/*.rb'].each { |f| require f }\n", :after => "require 'spec_helper'\n"
+  # END spec supports
+
   # START GIT
   git :init
   git add: "."
 
-  if yes?("Did you want to set origin git remote as git@github.com:doghero/#{app_name}.git")
-    run "git remote add origin git@github.com:doghero/#{app_name}.git"
+  if yes?('Did you want to set origin git remote as git@github.com:doghero/#{app_name}.git? (y/n)')
+    run 'git remote add origin git@github.com:doghero/#{app_name}.git'
   end
   # END GIT
 end
