@@ -7,7 +7,7 @@ jobs:
     environment:
       CIRCLE_ENV: test
     docker:
-    - image: circleci/ruby:2.6.3-stretch-node
+    - image: circleci/ruby:2.7.1-buster-node
       environment:
         DATABASE_HOST: 127.0.0.1
         DATABASE_USERNAME: #{app_name}
