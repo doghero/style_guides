@@ -22,7 +22,7 @@ gem_group :development, :test do
   gem 'rspec-rails', '~> 3.8'
 
   ## Checkers
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 0.89', require: false
   gem 'rubocop-rspec', require: false
 end
 
