@@ -31,7 +31,7 @@ plugins:
     enabled: true
     # Manter a versão abaixo idêntica à gem usada no projeto. Ver disponíveis em
     # https://docs.codeclimate.com/docs/rubocop#section-using-rubocop-s-newer-versions
-    channel: rubocop-0-73
+    channel: rubocop-0-89
 exclude_patterns:
 - config/
 - db/
