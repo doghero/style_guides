@@ -38,7 +38,7 @@ file '.env', <<-CODE
   DATABASE_HOST=db
   DATABASE_USERNAME=#{app_name}
   DATABASE_PASSWORD=password
-  SENTRY_DNS=nil
+  SENTRY_DSN=nil
   CODE
 
 after_bundle do
